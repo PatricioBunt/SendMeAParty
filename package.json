@@ -1,0 +1,13 @@
+{
+  "name": "sendmeaparty",
+  "private": true,
+  "description": "Static beer & pizza gift redeem page with encrypted Discord/Telegram webhooks",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "setup": "node setup.mjs",
+    "test:crypto": "node test-crypto.mjs",
+    "serve": "node serve.mjs"
+  }
+}

@@ -1,0 +1,7 @@
+.env
+.env.*
+*.pem
+
+# Generated ciphertext tied to real webhooks — copy config.example.js → config.js, then run setup.
+# Force-add config.js only if you intentionally want ciphertext in git (never plaintext secrets).
+config.js

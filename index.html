@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#3b0d18" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Redeem your summon</title>
+    <meta name="description" content="A sealed birthday summon — 72 beers, 2 pizzas, same-day." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%233b0d18' stroke='%23ffb703' stroke-width='1.5'/%3E%3Cpath fill='%23e63946' d='M8 19c3-8 13-8 16 0-4 6-12 6-16 0z'/%3E%3Cpath fill='%23ffb703' d='M10 18.2c2.4-1.2 9.6-1.2 12 0l-1.2 1.6c-3-1-6.6-1-9.6 0z'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Nunito:ital,wght@0,500;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#code">Skip to the code</a>
+    <div class="sky" aria-hidden="true">
+      <span class="floater f1">🍕</span>
+      <span class="floater f2">🍺</span>
+      <span class="floater f3">🧀</span>
+      <span class="floater f4">🍕</span>
+      <span class="floater f5">🍺</span>
+      <span class="floater f6">🌶️</span>
+    </div>
+    <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+    <main class="shell">
+      <section id="gate" class="card gate">
+        <header class="masthead">
+          <div class="stamp" aria-hidden="true">SEALED</div>
+          <p class="kicker" data-gift="kicker">Do not open until hungry</p>
+          <div class="heroes" aria-hidden="true">
+            <span class="hero-pizza">🍕</span>
+            <span class="hero-beer">🍺</span>
+          </div>
+          <h1 data-gift="title">Redeem your summon</h1>
+          <p class="promise" data-gift="promise">72 beers. 2 large pizzas. Same-day drop.</p>
+          <p class="lead" data-gift="lead">The code on the card is the only key. No code, no feast.</p>
+        </header>
+
+        <form id="unlock-form" novalidate>
+          <div id="unlock-alert" class="banner banner-err" role="alert" tabindex="-1" hidden></div>
+          <div class="field">
+            <label for="code">Secret code</label>
+            <div class="code-row">
+              <input
+                id="code"
+                name="code"
+                type="password"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                inputmode="text"
+                required
+                aria-describedby="code-hint"
+              />
+              <button type="button" class="ghost" id="toggle-code" aria-pressed="false">Show</button>
+            </div>
+            <p id="code-hint" class="hint">Straight off the card. Case-sensitive. No peeking at the rest until this lands.</p>
+          </div>
+          <button type="submit" class="submit" id="unlock-btn" data-gift="unlock">Crack it open</button>
+        </form>
+      </section>
+
+      <section id="party" class="card party" hidden>
+        <header class="masthead">
+          <p class="kicker" data-gift="unlockedKicker">Seal broken. Party is on.</p>
+          <div class="heroes unlocked-heroes" aria-hidden="true">
+            <span class="hero-pizza">🍕</span>
+            <span class="hero-beer">🍺</span>
+          </div>
+          <h1 data-gift="unlockedTitle">You're in. Where's it landing?</h1>
+          <p class="lead" data-gift="unlockedLead">I place the order. You just have to be home, 21+, and ready.</p>
+        </header>
+
+        <div id="success" class="banner banner-ok" hidden>
+          <p class="pop" aria-hidden="true">🍕🍺🎉</p>
+          <h2 data-gift="successTitle">It's happening.</h2>
+          <p data-gift="successBody">Ping received. I’ll schedule the drop and text you when the beers and pies are rolling.</p>
+        </div>
+
+        <form id="redeem-form" novalidate>
+          <div id="form-alert" class="banner banner-err" role="alert" tabindex="-1" hidden></div>
+
+          <fieldset class="block">
+            <legend>Drop zone</legend>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+            </div>
+
+            <div class="field">
+              <label for="street">Street address</label>
+              <input id="street" name="street" type="text" autocomplete="street-address" required />
+            </div>
+
+            <div class="field">
+              <label for="unit">Unit / apt / gate / delivery notes</label>
+              <textarea id="unit" name="unit" rows="2" autocomplete="address-line2" placeholder="Buzzer, dogs, “use the alley”…"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" required placeholder="Houston" />
+            </div>
+          </fieldset>
+
+          <fieldset class="block">
+            <legend>When should it hit? (optional)</legend>
+
+            <div class="split">
+              <div class="field">
+                <label for="date">Preferred date</label>
+                <input id="date" name="date" type="date" />
+              </div>
+              <div class="field">
+                <label for="time-window">Time window</label>
+                <input id="time-window" name="timeWindow" type="text" placeholder="after 5, during the game…" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="block">
+            <legend>Build the box (optional)</legend>
+
+            <fieldset class="sub">
+              <legend>Beer vibe</legend>
+              <div class="chips">
+                <label class="chip">
+                  <input type="checkbox" name="beer" value="Domestic" />
+                  <span>Domestic</span>
+                </label>
+                <label class="chip">
+                  <input type="checkbox" name="beer" value="Mexican lager" />
+                  <span>Mexican lager</span>
+                </label>
+                <label class="chip">
+                  <input type="checkbox" name="beer" value="IPA" />
+                  <span>IPA</span>
+                </label>
+                <label class="chip">
+                  <input type="checkbox" name="beer" value="Surprise me" />
+                  <span>Surprise me</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="split">
+              <div class="field">
+                <label for="pizza1">Pie 1</label>
+                <input id="pizza1" name="pizza1" type="text" placeholder="pepperoni, obviously" autocomplete="off" />
+              </div>
+              <div class="field">
+                <label for="pizza2">Pie 2</label>
+                <input id="pizza2" name="pizza2" type="text" placeholder="cheese, or go wild" autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="notes">Anything else?</label>
+              <textarea id="notes" name="notes" rows="3" placeholder="Allergies, extra ranch, a playlist, a warning about the dog…"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="field check">
+            <label class="check-label">
+              <input id="age" name="age" type="checkbox" required />
+              <span>
+                <span data-gift="ageLabel">I’ll be there and I’m 21+</span>
+                <small data-gift="ageHint">Somebody legal has to sign for the beer. That’s the deal.</small>
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit" id="send-btn" data-gift="submit">Fire the summon</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="gift.js"></script>
+    <script src="config.js"></script>
+    <script src="redeem-crypto.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
